@@ -14,6 +14,7 @@ export default class SearchScreen extends React.Component{
     
     }
     // It is the staging process where you do not question but it just happens.
+    //.limt(10) is 
     componentDidMount=async()=>{
         const query=await db.collection("transaction").limit(10).get();
         query.docs.map((doc)=>{
@@ -25,6 +26,7 @@ export default class SearchScreen extends React.Component{
                 
             })
         })
+       
     }
     fetchMoreTransactions = async ()=>{
         var text = this.state.search.toUpperCase()
@@ -53,9 +55,15 @@ export default class SearchScreen extends React.Component{
     }
 
     searchTransactions=async(searchText)=>{
+      // split is dividing.. It means 
+      console.log(searchText)
         var enteredText=searchText.split('');
+        console.log(enteredText);
         var text= searchText.toUpperCase();
-
+        console.log(text);
+        this.setState({
+          allTransactions:[]
+        });
         if (enteredText[0].toUpperCase() ==='B'){
             const transaction =  await db.collection("transaction").where('bookID','==',text).get()
             transaction.docs.map((doc)=>{

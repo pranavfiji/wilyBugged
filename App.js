@@ -2,8 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View,Image } from 'react-native';
 import TransactionScreen from './screens/bookTransaction';
 import SearchScreen from './screens/search';
-import {createAppContainer} from 'react-navigation';
+import {createAppContainer,createSwitchNavigator} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs'
+import LoginScreen from './screens/loginScreen';
 export default class App extends React.Component{
    
     render(){
@@ -16,6 +17,7 @@ export default class App extends React.Component{
 const TabNavigator=createBottomTabNavigator({
           Transaction:{screen:TransactionScreen},
           Search:{screen:SearchScreen}
+          
 },
     {
         // bracket represent the html and the one bracket represents the javaScript
@@ -36,7 +38,12 @@ const TabNavigator=createBottomTabNavigator({
         })
     }
 )
-const AppContainer=createAppContainer(TabNavigator)
+const SwitchNavigator=createSwitchNavigator({
+    LoginScreen:{screen:LoginScreen},
+    TabNavigator:{screen:TabNavigator}
+})
+const AppContainer=createAppContainer(SwitchNavigator);
+
 const styles = StyleSheet.create({
     container: {
       flex: 1,

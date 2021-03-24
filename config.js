@@ -1,4 +1,4 @@
-import * as firebase from "firebase"
+import firebase from "firebase"
 require("@firebase/firestore")
 var firebaseConfig = {
   apiKey: "AIzaSyCDhiDDzabCem_i7qPppPwRi6VdyrZuick",
